@@ -10,6 +10,7 @@ const Section = styled.section`
   color: var(--color-dark);
   display: flex;
   align-items: center;
+  overflow: hidden;
 `;
 
 const StickyParent = styled.div``;
@@ -19,8 +20,8 @@ const Scroll = styled.div`
   will-change: transform;
 `;
 const Image = styled.img`
-  width: 400px;
-  height: 300px;
+  width: 600px;
+  height: 450px;
   object-fit: cover;
   object-position: center;
   padding: 0 2rem;
@@ -54,7 +55,7 @@ const Slider = () => {
           end: () => "+=" + scroll,
           pin: true,
           scrub: true,
-          markers: true,
+          // markers: true,
         },
         x: "-=" + scrollTransform + "px",
       });

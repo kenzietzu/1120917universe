@@ -11,7 +11,10 @@ const Section = styled.section`
 `;
 
 const H1 = styled.h1`
-  font-size: 6rem;
+  font-size: 5rem;
+  @media (max-width: 600px) {
+    font-size: 3rem;
+  }
 `;
 
 const About = () => {
