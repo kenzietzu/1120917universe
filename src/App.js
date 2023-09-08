@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useRef } from "react";
+import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
+import gsap from "gsap";
+import GlobalStyles from "./GlobalStyles";
+import Header from "./components/Header";
+import About from "./components/About";
+import Slider from "./components/Slider";
 
 function App() {
+  const lenisRef = useRef(null);
+  useLenis(({ scroll }) => {
+    // called every scroll
+  });
+
+  useEffect(() => {
+    function update(time) {
+      lenisRef.current?.raf(time * 1000);
+    }
+
+    gsap.ticker.add(update);
+
+    return () => {
+      gsap.ticker.remove(update);
+    };
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyles />
+      <ReactLenis root ref={lenisRef} autoRaf={false}>
+        <Header />
+        <About />
+        <Slider />
+        <About />
+      </ReactLenis>
+    </>
   );
 }
 
