@@ -28,12 +28,12 @@ const TitleWrap = styled.div`
 `;
 const TitleMidWrap = styled.div`
   overflow: hidden;
-  margin-left: 3rem;
+  margin-left: 5rem;
 `;
 const TitleBtmWrap = styled.div`
   overflow: hidden;
   position: absolute;
-  right: 3rem;
+  right: 5rem;
   bottom: 0;
 `;
 const EnterWrap = styled.div`

@@ -29,7 +29,6 @@ function App() {
       <GlobalStyles />
       <ReactLenis root ref={lenisRef} autoRaf={false}>
         <Header />
-        <About />
         <Slider />
         <About />
       </ReactLenis>
