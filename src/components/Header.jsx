@@ -98,7 +98,7 @@ const Header = () => {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=1000px",
+          end: "+=2000px",
           scrub: true,
           pin: sectionRef.current,
           pinSpacing: true,
@@ -114,7 +114,7 @@ const Header = () => {
         .to(".title1", { xPercent: -20, yPercent: -200, duration: 3 })
         .to(".title2", { xPercent: -40, yPercent: -200, duration: 3 }, 0)
         .to(".title3", { xPercent: 40, yPercent: 200, duration: 3 }, 0)
-        .to(".enter", { opacity: 1, duration: 3, scale: 0.5 }, "-=3")
+        .to(".enter", { opacity: 1, duration: 10, scale: 0.5 }, "-=3")
         .to(".enter", { scale: 2, duration: 5 })
         .set(".box", { opacity: 1 })
         .to(".box", { width: "100vw", duration: 3 });

@@ -32,7 +32,7 @@ const About = () => {
       let tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 20%",
+          start: "top 50%",
           //   markers: true,
         },
       });
