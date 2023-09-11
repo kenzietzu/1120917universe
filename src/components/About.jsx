@@ -33,7 +33,7 @@ const About = () => {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 20%",
-          markers: true,
+          //   markers: true,
         },
       });
       results[0].lines.forEach((e) => {
@@ -48,6 +48,9 @@ const About = () => {
     <Section ref={sectionRef}>
       <H1 className="lines">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+        repellendus error ipsa quaerat ducimus enim accusamus cumque architecto
+        voluptates aut, iure quas in nisi veritatis rem quidem non voluptatibus
+        nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
         repellendus error ipsa quaerat ducimus enim accusamus cumque architecto
         voluptates aut, iure quas in nisi veritatis rem quidem non voluptatibus
         nostrum.

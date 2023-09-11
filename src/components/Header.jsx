@@ -12,8 +12,8 @@ const Section = styled.section`
 `;
 
 const Title = styled.h1`
-  font-size: 12rem;
-  line-height: 12rem;
+  font-size: 17rem;
+  line-height: 15rem;
   display: inline-block;
   @media (max-width: 600px) {
     font-size: 7rem;
@@ -93,9 +93,11 @@ const Header = () => {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
+          end: "+=1000px",
           scrub: true,
           pin: sectionRef.current,
           pinSpacing: true,
+          markers: true,
         },
         defaults: { ease: "none" },
       });
