@@ -15,8 +15,13 @@ const Title = styled.h1`
   font-size: 17rem;
   line-height: 15rem;
   display: inline-block;
-  @media (max-width: 600px) {
+  @media (max-width: 870px) {
+    font-size: 12rem;
+    line-height: 12rem;
+  }
+  @media (max-width: 650px) {
     font-size: 7rem;
+    line-height: 7rem;
   }
 `;
 const Title2 = styled(Title)`
@@ -97,7 +102,7 @@ const Header = () => {
           scrub: true,
           pin: sectionRef.current,
           pinSpacing: true,
-          markers: true,
+          //   markers: true,
         },
         defaults: { ease: "none" },
       });

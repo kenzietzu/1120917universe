@@ -16,7 +16,7 @@ const Section = styled.section`
 
 const H1 = styled.h1`
   font-size: 4rem;
-  @media (max-width: 600px) {
+  @media (max-width: 870px) {
     font-size: 3rem;
   }
 `;
