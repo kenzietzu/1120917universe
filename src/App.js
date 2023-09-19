@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
 import gsap from "gsap";
 import GlobalStyles from "./GlobalStyles";
@@ -28,9 +28,11 @@ function App() {
     <>
       <GlobalStyles />
       <ReactLenis root ref={lenisRef} autoRaf={false}>
-        <Header />
-        <Slider />
-        <About />
+        <Suspense fallback={<h1>LOADING...</h1>}>
+          <Header />
+          <Slider />
+          <About />
+        </Suspense>
       </ReactLenis>
     </>
   );

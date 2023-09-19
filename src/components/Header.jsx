@@ -1,7 +1,10 @@
+import { CameraShake, Stars } from "@react-three/drei";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { styled } from "styled-components";
+import * as THREE from "three";
 
 const Section = styled.section`
   width: 100vw;
@@ -9,6 +12,7 @@ const Section = styled.section`
   position: relative;
   display: flex;
   flex-direction: column;
+  background-color: transparent;
 `;
 
 const Title = styled.h1`
@@ -19,22 +23,25 @@ const Title = styled.h1`
     font-size: 12rem;
     line-height: 12rem;
   }
-  @media (max-width: 650px) {
-    font-size: 7rem;
-    line-height: 7rem;
+  @media (max-width: 680px) {
+    font-size: 8rem;
+    line-height: 8rem;
   }
 `;
 const Title2 = styled(Title)`
   color: #96f8ff;
 `;
 
+const TitleContainer = styled.div`
+  position: absolute;
+  padding-left: 4rem;
+`;
+
 const TitleWrap = styled.div`
   overflow: hidden;
+  padding-left: 1rem;
 `;
-const TitleMidWrap = styled.div`
-  overflow: hidden;
-  margin-left: 5rem;
-`;
+
 const TitleBtmWrap = styled.div`
   overflow: hidden;
   position: absolute;
@@ -72,6 +79,22 @@ const Box2 = styled.div`
 
 gsap.registerPlugin(ScrollTrigger);
 
+function Rig() {
+  const [vec] = useState(() => new THREE.Vector3());
+  const { camera, mouse } = useThree();
+  useFrame(() => camera.position.lerp(vec.set(mouse.x * 2, 1, 60), 0.05));
+  return (
+    <CameraShake
+      maxYaw={0.01}
+      maxPitch={0.01}
+      maxRoll={0.01}
+      yawFrequency={0.5}
+      pitchFrequency={0.5}
+      rollFrequency={0.4}
+    />
+  );
+}
+
 const Header = () => {
   const sectionRef = useRef(null);
 
@@ -81,24 +104,20 @@ const Header = () => {
       const titles = gsap.utils.toArray(".title");
       const titleTl = gsap.timeline();
       titles.forEach((title) => {
-        titleTl.fromTo(
-          title,
-          { yPercent: 100 },
-          { yPercent: 0, duration: 0.3 }
-        );
+        titleTl.fromTo(title, { y: 200 }, { y: 0, duration: 0.3 });
       });
       //enter scale
       gsap.set(".enter", {
         scale: 0.001,
         xPercent: -1.8,
         transformOrigin: "50% 50%",
-        opacity: 0,
+        opacity: 0.5,
       });
       const enterTl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=2000px",
+          end: "+=3000px",
           scrub: true,
           pin: sectionRef.current,
           pinSpacing: true,
@@ -123,23 +142,31 @@ const Header = () => {
   }, []);
 
   return (
-    <Section ref={sectionRef}>
-      <TitleMidWrap>
-        <TitleWrap>
-          <Title className="title title1">WELCOME TO</Title>
-        </TitleWrap>
-        <Title2 className="title title2">CHARLIE</Title2>
-      </TitleMidWrap>
-      <TitleBtmWrap>
-        <Title className="title title3">UNIVERSE</Title>
-      </TitleBtmWrap>
-      <EnterWrap>
-        <Enter className="enter">ENTER</Enter>
-      </EnterWrap>
-      <Box>
-        <Box2 className="box"></Box2>
-      </Box>
-    </Section>
+    <>
+      <Section ref={sectionRef}>
+        <Canvas>
+          <Stars radius={10} count={1000} speed={2} factor={4} fade />
+          <Rig />
+        </Canvas>
+        <TitleContainer>
+          <TitleWrap>
+            <Title className="title title1">WELCOME TO</Title>
+          </TitleWrap>
+          <TitleWrap>
+            <Title2 className="title title2">CHARLIE</Title2>
+          </TitleWrap>
+        </TitleContainer>
+        <TitleBtmWrap>
+          <Title className="title title3">GALAXY</Title>
+        </TitleBtmWrap>
+        <EnterWrap>
+          <Enter className="enter">ENTER</Enter>
+        </EnterWrap>
+        <Box>
+          <Box2 className="box"></Box2>
+        </Box>
+      </Section>
+    </>
   );
 };
 

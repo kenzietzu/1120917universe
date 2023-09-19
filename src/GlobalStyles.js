@@ -30,6 +30,7 @@ body{
     background-color: var(--color-dark);
     color: var(--color-light);
 		overscroll-behavior: none;
+    min-width: 430px;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -50,6 +51,7 @@ a{
 .lenis::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: var(--color-dark);
+  box-shadow: none;
 }
 //捲軸寬度
 .lenis::-webkit-scrollbar {
@@ -58,6 +60,15 @@ a{
 //捲軸本體顏色
 .lenis::-webkit-scrollbar-thumb {
   background-color: var(--color-light);
+}
+
+Canvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
 `;

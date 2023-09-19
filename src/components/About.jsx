@@ -15,7 +15,7 @@ const Section = styled.section`
 `;
 
 const H1 = styled.h1`
-  font-size: 4rem;
+  font-size: 3rem;
   @media (max-width: 870px) {
     font-size: 3rem;
   }
@@ -37,7 +37,6 @@ const About = () => {
         },
       });
       results[0].lines.forEach((e) => {
-        console.log(e);
         tl.from(e, { opacity: 0, yPercent: 30, duration: 0.2 });
       });
     }, sectionRef);
