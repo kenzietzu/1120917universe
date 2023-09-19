@@ -5,6 +5,7 @@ import GlobalStyles from "./GlobalStyles";
 import Header from "./components/Header";
 import About from "./components/About";
 import Slider from "./components/Slider";
+import Loader from "./components/Loader";
 
 function App() {
   const lenisRef = useRef(null);
@@ -28,7 +29,7 @@ function App() {
     <>
       <GlobalStyles />
       <ReactLenis root ref={lenisRef} autoRaf={false}>
-        <Suspense fallback={<h1>LOADING...</h1>}>
+        <Suspense fallback={<Loader />}>
           <Header />
           <Slider />
           <About />
