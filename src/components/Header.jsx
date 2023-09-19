@@ -109,7 +109,7 @@ const Header = () => {
       //enter scale
       gsap.set(".enter", {
         scale: 0.001,
-        xPercent: -1.8,
+        xPercent: -1,
         transformOrigin: "50% 50%",
         opacity: 0.5,
       });
